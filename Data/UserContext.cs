@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AirplaneBookingSystem.Models;
 
 namespace AirplaneBookingSystem.Data
@@ -12,6 +8,14 @@ namespace AirplaneBookingSystem.Data
     {
         public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
-        public DbSet<User> Users { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<UserFlights>().HasKey(sc => new { sc.UserId, sc.FlightId });
+        }
+
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Flight> Flights { get; set; }
+        public virtual DbSet<UserFlights> UserFlights { get; set; }
     }
 }

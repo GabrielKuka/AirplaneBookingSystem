@@ -2,7 +2,6 @@ C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\bin\Debug\netcoreapp3.0
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\bin\Debug\netcoreapp3.0\appsettings.json
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\bin\Debug\netcoreapp3.0\AirplaneBookingSystem.exe
-C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.csprojAssemblyReference.cache
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\staticwebassets\AirplaneBookingSystem.StaticWebAssets.Manifest.cache
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\staticwebassets\AirplaneBookingSystem.StaticWebAssets.xml
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.RazorAssemblyInfo.cache
@@ -127,3 +126,6 @@ C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\bin\Debug\netcoreapp3.0
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\Index.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.csprojAssemblyReference.cache
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\Details.cshtml.g.cs

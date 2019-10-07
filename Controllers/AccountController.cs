@@ -41,7 +41,7 @@ namespace AirplaneBookingSystem.Controllers
 
                 if (result.Succeeded) {
                     await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("index", "flight");
                 }
 
                 foreach (var error in result.Errors) {
@@ -64,7 +64,7 @@ namespace AirplaneBookingSystem.Controllers
                 var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
                 if (result.Succeeded) {
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("index", "flight");
                 }
 
              ModelState.AddModelError(string.Empty, "Invalid login attempt.");
