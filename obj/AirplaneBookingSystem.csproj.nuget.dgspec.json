@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj": {}
+    "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABSUSER2\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj": {
+    "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABSUSER2\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
+        "projectUniqueName": "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABSUSER2\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
         "projectName": "AirplaneBookingSystem",
-        "projectPath": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
-        "packagesPath": "C:\\Users\\Gabriel Kuka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\obj\\",
+        "projectPath": "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABSUSER2\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
+        "packagesPath": "C:\\Users\\april\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABSUSER2\\AirplaneBookingSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Gabriel Kuka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\april\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,6 +41,14 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "EntityFrameworkCore.Diagrams": {
+              "target": "Package",
+              "version": "[0.4.2, )"
+            },
+            "Microsoft.AspNet.WebPages.Data": {
+              "target": "Package",
+              "version": "[3.2.7, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"
@@ -66,6 +74,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.6.0, )"
             }
           },
           "imports": [

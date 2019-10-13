@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AirplaneBookingSystem.Models;
+using AirplaneBookingSystem.ViewModel;
 
 namespace AirplaneBookingSystem.Data
 {
     public class UserContext : IdentityDbContext
     {
+        UserContext(UserFlights uf) => UserFlights.Add(uf);
+
         public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

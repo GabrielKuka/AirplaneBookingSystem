@@ -19,7 +19,8 @@ namespace AirplaneBookingSystem.Models
         [DataType(DataType.Date)]
         public string ArrivalTime { get; set; }
 
-        public IList<UserFlights> UserFlights { get; set; }
+        public int SeatsLeft { get; set; }
+
 
     }
 }
