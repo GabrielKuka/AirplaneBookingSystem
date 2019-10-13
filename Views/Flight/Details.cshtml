@@ -43,7 +43,20 @@
     </dl>
 </div>
 <div>
-    
+
     <a asp-action="Index">Go Back</a>
-    <a class="btn btn-outline-success">Book This Flight</a>
+    @if (Model.FreeSeats == 0) {
+        <br />
+        <div class="alert">
+            Sorry there are no free seats in this flight.
+        </div>
+    } else if ((bool)ViewData["isBooked"])
+    {
+        <a class="btn btn-outline-danger" asp-action="Cancel" asp-route-id="@Model.FlightId">Cancel This Flight</a>
+    }
+    else
+    {
+        <a class="btn btn-outline-success" asp-action="Book" asp-route-id="@Model.FlightId">Book This Flight</a>
+    }
+
 </div>

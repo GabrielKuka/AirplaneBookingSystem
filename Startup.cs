@@ -27,11 +27,12 @@ namespace AirplaneBookingSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("userContext")));
-            services.AddIdentity<User, IdentityRole>(options => {
+            services.AddDbContext<Data.Db_Context>(options => options.UseSqlServer(Configuration.GetConnectionString("userContext")));
+            Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentity<User, IdentityRole>(services, (IdentityOptions options) =>
+            {
                 options.Password.RequiredLength = 3;
             })
-        .AddEntityFrameworkStores<UserContext>();
+        .AddEntityFrameworkStores<Data.Db_Context>();
             services.AddControllersWithViews();
         }
 

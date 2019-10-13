@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AirplaneBookingSystem.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(Data.Db_Context))]
     partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -40,6 +40,9 @@ namespace AirplaneBookingSystem.Migrations
 
                     b.Property<string>("FlightNumber")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FreeSeats")
+                        .HasColumnType("int");
 
                     b.HasKey("FlightId");
 

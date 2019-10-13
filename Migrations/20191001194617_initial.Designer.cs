@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AirplaneBookingSystem.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(Data.Db_Context))]
     [Migration("20191001194617_initial")]
     partial class initial
     {

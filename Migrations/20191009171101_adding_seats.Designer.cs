@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirplaneBookingSystem.Migrations
 {
     [DbContext(typeof(Data.Db_Context))]
-    [Migration("20191007185134_addingFlight")]
-    partial class addingFlight
+    [Migration("20191009171101_adding_seats")]
+    partial class adding_seats
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,17 +31,20 @@ namespace AirplaneBookingSystem.Migrations
                     b.Property<string>("Arrival")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ArrivalTime")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ArrivalTime")
+                        .HasColumnType("int");
 
                     b.Property<string>("Departure")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DepartureTime")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DepartureTime")
+                        .HasColumnType("int");
 
                     b.Property<string>("FlightNumber")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FreeSeats")
+                        .HasColumnType("int");
 
                     b.HasKey("FlightId");
 

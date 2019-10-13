@@ -4,9 +4,9 @@ using AirplaneBookingSystem.Models;
 
 namespace AirplaneBookingSystem.Data
 {
-    public class UserContext : IdentityDbContext
+    public class Db_Context : IdentityDbContext
     {
-        public UserContext(DbContextOptions<UserContext> options) : base(options) { }
+        public Db_Context(DbContextOptions<Db_Context> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
