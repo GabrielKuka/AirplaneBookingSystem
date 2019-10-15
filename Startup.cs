@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using AirplaneBookingSystem.Data;
 using Microsoft.AspNetCore.Identity;
 using AirplaneBookingSystem.Models;
+using AirplaneBookingSystem.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AirplaneBookingSystem
 {
@@ -27,12 +22,9 @@ namespace AirplaneBookingSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Data.Db_Context>(options => options.UseSqlServer(Configuration.GetConnectionString("userContext")));
-            Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentity<User, IdentityRole>(services, (IdentityOptions options) =>
-            {
-                options.Password.RequiredLength = 3;
-            })
-        .AddEntityFrameworkStores<Data.Db_Context>();
+            services.AddDbContext<Db_Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Db_Context")));
+            services.AddIdentity<User, IdentityRole>()
+            .AddEntityFrameworkStores<Db_Context>();
             services.AddControllersWithViews();
         }
 
