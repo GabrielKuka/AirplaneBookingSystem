@@ -12,7 +12,6 @@ C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.TagHelpers.output.cache
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.RazorCoreGenerate.cache
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -131,3 +130,4 @@ C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Errors\UserNotFound.cshtml.g.cs
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\Book.cshtml.g.cs
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.csprojAssemblyReference.cache
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\Edit.cshtml.g.cs

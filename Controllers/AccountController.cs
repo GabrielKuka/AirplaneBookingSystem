@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AirplaneBookingSystem.ViewModel;
 using AirplaneBookingSystem.Models;
@@ -44,12 +41,19 @@ namespace AirplaneBookingSystem.Controllers
                     return RedirectToAction("index", "flight");
                 }
 
-                foreach (var error in result.Errors) {
-                    ModelState.AddModelError("", error.Description);
-                }
+                AccountError(ref result);
             }
 
             return View();
+        }
+
+        public void AccountError(ref IdentityResult result) {
+            foreach (var error in result.Errors)
+                ModelState.AddModelError("", error.Description);
+        }
+
+        public void AccountError(ref Microsoft.AspNetCore.Identity.SignInResult result) {
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
         }
 
         [HttpGet]
@@ -67,8 +71,8 @@ namespace AirplaneBookingSystem.Controllers
                     return RedirectToAction("index", "flight");
                 }
 
-             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-               
+                AccountError(ref result);
+    
             }
 
             return View();

@@ -42,8 +42,8 @@
         </dd>
     </dl>
 </div>
-<div>
-
+<div >
+  
     <a asp-action="Index">Go Back</a>
     @if (Model.FreeSeats == 0) {
         <br />
@@ -58,5 +58,14 @@
     {
         <a class="btn btn-outline-success" asp-action="Book" asp-route-id="@Model.FlightId">Book This Flight</a>
     }
+    
+    @if ((bool)ViewData["isAdmin"]) { 
+        <hr /><br />
+        <form asp-action="Delete">
+           <input type="hidden" asp-for="FlightId" />
+           <input type="submit" class="btn btn-danger" value="Delete" />
+        </form>
+    }
+
 
 </div>

@@ -13,10 +13,8 @@ namespace AirplaneBookingSystem.Models
 
         public string Arrival { get; set; }
 
-        [DataType(DataType.Date)]
         public string DepartureTime { get; set; }
 
-        [DataType(DataType.Date)]
         public string ArrivalTime { get; set; }
 
         public int FreeSeats { get; set; }

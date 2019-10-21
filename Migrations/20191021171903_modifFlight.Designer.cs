@@ -4,14 +4,16 @@ using AirplaneBookingSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AirplaneBookingSystem.Migrations
 {
     [DbContext(typeof(Db_Context))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20191021171903_modifFlight")]
+    partial class modifFlight
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

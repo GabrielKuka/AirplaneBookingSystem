@@ -4,26 +4,83 @@ using Microsoft.AspNetCore.Mvc;
 using AirplaneBookingSystem.Data;
 using AirplaneBookingSystem.Models;
 using System.Security.Claims;
-using AirplaneBookingSystem.Data;
+using System.Linq;
 
 namespace AirplaneBookingSystem.Controllers
 {
     public class FlightController : Controller
     {
         private readonly Db_Context ctx;
-   
 
         public FlightController(Db_Context dbContext) {
-            this.ctx = dbContext;
-         
+            this.ctx = dbContext;         
         }
 
         public  async Task<IActionResult> Index()
         {
             if (!User.Identity.IsAuthenticated)
                 return View("Views/Errors/UserNotFound.cshtml");
+            else if (IsAdmin())
+                ViewData["isAdmin"] = true;
+            else
+                ViewData["isAdmin"] = false;
 
             return View( await ctx.Flights.ToListAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int flightId) {
+
+            var currentFlight = await ctx.Flights.FindAsync(flightId);
+            ctx.Flights.Remove(currentFlight);
+            await ctx.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id) {
+            if (id == null)
+                return NotFound();
+
+            var currentFlight = await ctx.Flights.FindAsync(id);
+
+            if (currentFlight == null)
+                return NotFound();
+            
+            return View(currentFlight);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("FlightId, FlightNumber, Departure, Arrival, DepartureTime, ArrivalTime, FreeSeats")] Flight currentFlight) {
+
+            if (id != currentFlight.FlightId)
+                return NotFound();
+
+            
+
+            if (ModelState.IsValid) {
+                try {
+                    ctx.Update(currentFlight);
+                    await ctx.SaveChangesAsync();
+
+                } catch (DbUpdateConcurrencyException) {
+                    if (FlightExists(id))
+                        throw;
+                    else
+                        return NotFound();
+                }
+
+                if (IsAdmin())
+                    ViewData["isAdmin"] = true;
+                else
+                    ViewData["isAdmin"] = false;
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(currentFlight);
         }
 
         [HttpGet]
@@ -36,7 +93,8 @@ namespace AirplaneBookingSystem.Controllers
             // get the current flight and current user
             var currentUser = await ctx.Users.FindAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var currentFlight = await ctx.Flights.FindAsync(id);
-
+          
+            // Create the Booking
             var userFlight = new UserFlights {             
                 User = currentUser,         
                 Flight = currentFlight
@@ -44,9 +102,9 @@ namespace AirplaneBookingSystem.Controllers
 
             if (userFlight != null)
             {              
-                ctx.UserFlights.Add(userFlight);  // add the user flight
+                ctx.UserFlights.Add(userFlight);  // add the user flight to the db
                 --currentFlight.FreeSeats;        // assign the seat as reserved
-                await ctx.SaveChangesAsync();                // save changes to db
+                await ctx.SaveChangesAsync();     // save changes to db
             }
                 
 
@@ -63,6 +121,10 @@ namespace AirplaneBookingSystem.Controllers
             // get current flight
             var flight = await ctx.Flights.FindAsync(id);
             ViewData["isBooked"] = false;
+            if (IsAdmin())
+                ViewData["isAdmin"] = true;
+            else
+                ViewData["isAdmin"] = false;
 
             // check if this flight is booked by this user
             foreach (var usrFlight in ctx.UserFlights) {
@@ -80,6 +142,20 @@ namespace AirplaneBookingSystem.Controllers
             }
 
             return View(flight);
+        }
+
+        private bool IsAdmin() {
+
+            var currentUser =  ctx.Users.Find(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            
+            if (currentUser.IsAdmin)
+                return true;
+
+            return false;
+        }
+
+        private bool FlightExists(int id) {
+            return ctx.Flights.Any(e => e.FlightId == id);
         }
     }
 }
