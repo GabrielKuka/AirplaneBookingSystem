@@ -16,19 +16,22 @@ namespace AirplaneBookingSystem.Controllers
             this.ctx = dbContext;         
         }
 
+
+        
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        // Creates a flight (you need to be admin)
         [HttpPost]
        public async Task<IActionResult> Create([Bind("FlightId, FlightNumber, Departure, Arrival, DepartureTime, ArrivalTime, FreeSeats")] Flight flight)
         {
 
-            if (ModelState.IsValid) {
-                ctx.Flights.Add(flight);
-                await ctx.SaveChangesAsync();
+            if (ModelState.IsValid) {               // Check validation 
+                ctx.Flights.Add(flight);            // Add the flight
+                await ctx.SaveChangesAsync();       // Save changes
                 return RedirectToAction("index", "flight");
             }
 

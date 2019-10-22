@@ -33,8 +33,8 @@
         <h1>List of Available Flights</h1>
     }
 
-    <table class="table">
-        <thead>
+    <table class="table table-borderless table-hover ">
+        <thead class="thead-dark">
             <tr>
                 <th> @Html.DisplayNameFor(model => model.FlightNumber)</th>
                 <th> @Html.DisplayNameFor(model => model.Departure)</th>
@@ -42,6 +42,7 @@
                 <th> @Html.DisplayNameFor(model => model.DepartureTime)</th>
                 <th> @Html.DisplayNameFor(model => model.ArrivalTime)</th>
                 <th>@Html.DisplayNameFor(model => model.FreeSeats)</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
