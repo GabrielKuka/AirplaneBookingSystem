@@ -131,3 +131,4 @@ C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\Book.cshtml.g.cs
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.csprojAssemblyReference.cache
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\Edit.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\Create.cshtml.g.cs

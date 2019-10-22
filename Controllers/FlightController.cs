@@ -16,7 +16,26 @@ namespace AirplaneBookingSystem.Controllers
             this.ctx = dbContext;         
         }
 
-        public  async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+       public async Task<IActionResult> Create([Bind("FlightId, FlightNumber, Departure, Arrival, DepartureTime, ArrivalTime, FreeSeats")] Flight flight)
+        {
+
+            if (ModelState.IsValid) {
+                ctx.Flights.Add(flight);
+                await ctx.SaveChangesAsync();
+                return RedirectToAction("index", "flight");
+            }
+
+            return View(flight);
+        }
+
+        public async Task<IActionResult> Index()
         {
             if (!User.Identity.IsAuthenticated)
                 return View("Views/Errors/UserNotFound.cshtml");

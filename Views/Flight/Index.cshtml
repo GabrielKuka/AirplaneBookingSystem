@@ -22,6 +22,11 @@
         <hr />
         <h4>Welcome Administrator!</h4>
         <hr />
+
+        <a class="btn btn-outline-info" asp-action="Create">Create A Flight</a>
+        <br />
+        <br />
+
     }
     else
     {
@@ -44,28 +49,28 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>@Html.DisplayFor(model => item.FlightNumber)</td>
+                <tr>
+                    <td>@Html.DisplayFor(model => item.FlightNumber)</td>
 
-                <td>@Html.DisplayFor(model => item.Departure)</td>
+                    <td>@Html.DisplayFor(model => item.Departure)</td>
 
-                <td>@Html.DisplayFor(model => item.Arrival)</td>
+                    <td>@Html.DisplayFor(model => item.Arrival)</td>
 
-                <td>@Html.DisplayFor(model => item.DepartureTime)</td>
+                    <td>@Html.DisplayFor(model => item.DepartureTime)</td>
 
-                <td>@Html.DisplayFor(model => item.ArrivalTime)</td>
+                    <td>@Html.DisplayFor(model => item.ArrivalTime)</td>
 
-                <td>@Html.DisplayFor(model => item.FreeSeats)</td>
+                    <td>@Html.DisplayFor(model => item.FreeSeats)</td>
 
-                <td><a asp-action="Details" asp-route-id="@item.FlightId" class="btn btn-outline-info">Details</a></td>
-                @if ((bool)ViewData["isAdmin"])
-                {
-                    <td><a asp-action="Edit" asp-route-id="@item.FlightId" class="btn btn-outline-warning">Edit</a></td>
-       
+                    <td><a asp-action="Details" asp-route-id="@item.FlightId" class="btn btn-outline-info">Details</a></td>
+                    @if ((bool)ViewData["isAdmin"])
+                    {
+                        <td><a asp-action="Edit" asp-route-id="@item.FlightId" class="btn btn-outline-warning">Edit</a></td>
 
-                }
 
-            </tr>
+                    }
+
+                </tr>
 
             }
         </tbody>
