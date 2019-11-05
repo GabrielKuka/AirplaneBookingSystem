@@ -35,13 +35,20 @@ using Microsoft.AspNetCore.Identity;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\Views\_ViewImports.cshtml"
+using System.Security.Claims;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\Views\_ViewImports.cshtml"
 using AirplaneBookingSystem.ViewModel;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c9d1f751327b65b37e1ff75dda8cee647a4cad4a", @"/Views/Flight/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3672ba602db1fed720ac3d991a406b40915758eb", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d435e771302bf56c99c4d7675b223ee1f1f76bb", @"/Views/_ViewImports.cshtml")]
     public class Views_Flight_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<AirplaneBookingSystem.Models.Flight>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -168,7 +175,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
             WriteLiteral("\n        </dd>\n    </dl>\n</div>\n<div >\n  \n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a9759", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a9953", async() => {
                 WriteLiteral("Go Back");
             }
             );
@@ -201,7 +208,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
             WriteLiteral("        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a11519", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a11713", async() => {
                 WriteLiteral("Cancel This Flight");
             }
             );
@@ -243,7 +250,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
             WriteLiteral("        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a14025", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a14219", async() => {
                 WriteLiteral("Book This Flight");
             }
             );
@@ -291,9 +298,9 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
             WriteLiteral("        <hr /><br />\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a16777", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a16971", async() => {
                 WriteLiteral("\r\n           ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a17047", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c9d1f751327b65b37e1ff75dda8cee647a4cad4a17241", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();

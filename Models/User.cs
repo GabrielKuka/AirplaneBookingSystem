@@ -11,5 +11,7 @@ namespace AirplaneBookingSystem.Models
 
         public bool IsAdmin { get; set; }
         public IList<UserFlights> UserFlights { get; set; }
+
+        public IList<Feedback> Feedback { get; set; } 
     }
 }

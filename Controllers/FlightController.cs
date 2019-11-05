@@ -47,7 +47,7 @@ namespace AirplaneBookingSystem.Controllers
             else
                 ViewData["isAdmin"] = false;
 
-            return View( await ctx.Flights.ToListAsync());
+            return View(await ctx.Flights.ToListAsync());
         }
 
         [HttpPost]

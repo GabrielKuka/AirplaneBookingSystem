@@ -22,8 +22,10 @@
         <hr />
         <h4>Welcome Administrator!</h4>
         <hr />
-
-        <a class="btn btn-outline-info" asp-action="Create">Create A Flight</a>
+        <div style="display:inline-block;">
+            <a class="btn btn-outline-info" asp-action="Create">Create A Flight</a>
+            <a class="btn btn-outline-info" asp-action="List" asp-controller="Feedback">See the feedback</a>
+        </div>
         <br />
         <br />
 
@@ -31,6 +33,9 @@
     else
     {
         <h1>List of Available Flights</h1>
+        <br />
+        <a class="btn btn-link" asp-controller="feedback" asp-action="create">Leave a Feedback</a>
+        <br/>
     }
 
     <table class="table table-borderless table-hover ">

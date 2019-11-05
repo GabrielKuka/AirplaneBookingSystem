@@ -4,14 +4,16 @@ using AirplaneBookingSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AirplaneBookingSystem.Migrations
 {
     [DbContext(typeof(Db_Context))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20191105155314_feedback_2")]
+    partial class feedback_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,12 +39,7 @@ namespace AirplaneBookingSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("FeedbackId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Feedback");
                 });
@@ -313,13 +310,6 @@ namespace AirplaneBookingSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("User");
-                });
-
-            modelBuilder.Entity("AirplaneBookingSystem.Models.Feedback", b =>
-                {
-                    b.HasOne("AirplaneBookingSystem.Models.User", null)
-                        .WithMany("Feedback")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("AirplaneBookingSystem.Models.UserFlights", b =>
