@@ -22,6 +22,7 @@ namespace AirplaneBookingSystem.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
+
             migrationBuilder.AlterColumn<string>(
                 name: "Departure",
                 table: "Flights",

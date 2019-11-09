@@ -155,7 +155,6 @@ namespace AirplaneBookingSystem.Controllers
                     ViewData["isBooked"] = true;
                     break;
                 }
-
                 
             }
 
@@ -178,6 +177,34 @@ namespace AirplaneBookingSystem.Controllers
 
         private bool FlightExists(int id) {
             return ctx.Flights.Any(e => e.FlightId == id);
+        }
+        public async Task<IActionResult> Cancel(int? id)
+        {
+
+            if (id == null)
+                return NotFound();
+
+
+            // get the current flight and current user
+            var currentUser = await ctx.Users.FindAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var currentFlight = await ctx.Flights.FindAsync(id);
+
+            // Create a User Flight so we know who had this flight for the View
+            var userFlight = new UserFlights
+            {
+                User = currentUser,
+                Flight = currentFlight
+            };
+
+            if (userFlight != null)
+            {
+                ctx.UserFlights.Remove(userFlight);  // removes the user flight from the db
+                ++currentFlight.FreeSeats;        // assigns the seat as free
+                await ctx.SaveChangesAsync();     // save changes to db
+            }
+
+
+            return View(userFlight);
         }
     }
 }
