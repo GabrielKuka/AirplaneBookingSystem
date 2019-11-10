@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABS\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj": {}
+    "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABS\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj": {
+    "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABS\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
+        "projectUniqueName": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
         "projectName": "AirplaneBookingSystem",
-        "projectPath": "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABS\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
-        "packagesPath": "C:\\Users\\april\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\april\\OneDrive\\Desktop\\All\\AUBG Fall 2019\\Software Engineering\\Project\\ABS\\AirplaneBookingSystem\\obj\\",
+        "projectPath": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
+        "packagesPath": "C:\\Users\\Gabriel Kuka\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\april\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gabriel Kuka\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
