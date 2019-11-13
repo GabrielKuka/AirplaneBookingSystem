@@ -21,23 +21,35 @@ namespace AirplaneBookingSystem.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            if (!User.Identity.IsAuthenticated) {
+                return View("Views/Errors/MustBeLoggedIn.cshtml");
+            }else if (IsAdmin()) {
+                return View();
+            } else
+            {
+                return View("Views/Errors/MustBeAdmin.cshtml");
+            }
+            
         }
 
         // Creates a flight (you need to be admin)
         [HttpPost]
        public async Task<IActionResult> Create([Bind("FlightId, FlightNumber, Departure, Arrival, DepartureTime, ArrivalTime, FreeSeats")] Flight flight)
         {
+            
+                if (ModelState.IsValid)
+                {               // Check validation 
+                    ctx.Flights.Add(flight);            // Add the flight
+                    await ctx.SaveChangesAsync();       // Save changes
+                    return RedirectToAction("index", "flight");
+                }
 
-            if (ModelState.IsValid) {               // Check validation 
-                ctx.Flights.Add(flight);            // Add the flight
-                await ctx.SaveChangesAsync();       // Save changes
-                return RedirectToAction("index", "flight");
-            }
+                return View(flight);
+            
 
-            return View(flight);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             if (!User.Identity.IsAuthenticated)
@@ -53,24 +65,36 @@ namespace AirplaneBookingSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int flightId) {
 
-            var currentFlight = await ctx.Flights.FindAsync(flightId);
-            ctx.Flights.Remove(currentFlight);
-            await ctx.SaveChangesAsync();
+                var currentFlight = await ctx.Flights.FindAsync(flightId);
+                ctx.Flights.Remove(currentFlight);
+                await ctx.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+          
+            
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int? id) {
-            if (id == null)
-                return NotFound();
+            if (!User.Identity.IsAuthenticated) {
+                return View("Views/Errors/MustBeLoggedIn.cshtml");
+            } else if (IsAdmin()) {
 
-            var currentFlight = await ctx.Flights.FindAsync(id);
+                if (id == null)
+                    return NotFound();
 
-            if (currentFlight == null)
-                return NotFound();
+                var currentFlight = await ctx.Flights.FindAsync(id);
+
+                if (currentFlight == null)
+                    return NotFound();
+
+                return View(currentFlight);
+
+            } else
+            {
+                return View("Views/Errors/MustBeAdmin.cshtml");
+            }
             
-            return View(currentFlight);
         }
         
         [HttpPost]
@@ -206,5 +230,7 @@ namespace AirplaneBookingSystem.Controllers
 
             return View(userFlight);
         }
+
     }
+
 }
