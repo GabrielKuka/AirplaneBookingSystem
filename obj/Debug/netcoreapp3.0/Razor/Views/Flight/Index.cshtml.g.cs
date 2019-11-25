@@ -47,8 +47,15 @@ using AirplaneBookingSystem.ViewModel;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\Views\_ViewImports.cshtml"
+using Microsoft.EntityFrameworkCore;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c98ebdcf6e5e33b24591f6fce805698808752469", @"/Views/Flight/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d435e771302bf56c99c4d7675b223ee1f1f76bb", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"755f4e81bbe3f8cf50b7baccfdff372391b16ff4", @"/Views/_ViewImports.cshtml")]
     public class Views_Flight_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Flight>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-outline-info"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -88,7 +95,7 @@ using AirplaneBookingSystem.ViewModel;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\n<html>\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce8056988087524697189", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce8056988087524697390", async() => {
                 WriteLiteral("\n    <style type=\"text/css\">\n        h4 {\r\n            padding: 5px 5px 5px 5px;\r\n            text-align: center;\r\n        }\n\n        hr {\r\n            border-color: darkred;\r\n        }\n    </style>\n");
             }
             );
@@ -102,7 +109,7 @@ using AirplaneBookingSystem.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce8056988087524698366", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce8056988087524698567", async() => {
                 WriteLiteral("\r\n\r\n\r\n\r\n");
 #nullable restore
 #line 20 "C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\Views\Flight\Index.cshtml"
@@ -113,7 +120,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
                 WriteLiteral("        <hr />\r\n        <h4>Welcome Administrator!</h4>\r\n        <hr />                                            \r\n        <div style=\"display:inline-block;\">\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce8056988087524699102", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce8056988087524699303", async() => {
                     WriteLiteral("Create A Flight");
                 }
                 );
@@ -130,7 +137,7 @@ using AirplaneBookingSystem.ViewModel;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce80569880875246910429", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce80569880875246910630", async() => {
                     WriteLiteral("See the feedback");
                 }
                 );
@@ -160,7 +167,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
                 WriteLiteral("        <h1>List of Available Flights</h1>\r\n        <br />\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce80569880875246912396", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce80569880875246912597", async() => {
                     WriteLiteral("Leave a Feedback");
                 }
                 );
@@ -292,7 +299,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
                 WriteLiteral("</td>\r\n\r\n                    <td>");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce80569880875246918343", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce80569880875246918544", async() => {
                     WriteLiteral("Details");
                 }
                 );
@@ -333,7 +340,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
                 WriteLiteral("                        <td>");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce80569880875246921005", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c98ebdcf6e5e33b24591f6fce80569880875246921206", async() => {
                     WriteLiteral("Edit");
                 }
                 );

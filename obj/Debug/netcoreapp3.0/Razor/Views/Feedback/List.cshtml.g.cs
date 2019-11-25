@@ -47,8 +47,15 @@ using AirplaneBookingSystem.ViewModel;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\Views\_ViewImports.cshtml"
+using Microsoft.EntityFrameworkCore;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e7c2d14be69ef9156a390e0171192839d0b15f00", @"/Views/Feedback/List.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d435e771302bf56c99c4d7675b223ee1f1f76bb", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"755f4e81bbe3f8cf50b7baccfdff372391b16ff4", @"/Views/_ViewImports.cshtml")]
     public class Views_Feedback_List : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<AirplaneBookingSystem.Models.Feedback>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -89,7 +96,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
             WriteLiteral("<html lang=\"en\">\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7c2d14be69ef9156a390e0171192839d0b15f004887", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7c2d14be69ef9156a390e0171192839d0b15f005088", async() => {
                 WriteLiteral("\r\n    <style type=\"text/css\">\r\n        h1 {\r\n            text-align: center;\r\n            font-weight: bold;\r\n        }\r\n\r\n        hr {\r\n            border-color: darkred;\r\n        }\r\n    </style>\r\n");
             }
             );
@@ -103,7 +110,7 @@ using AirplaneBookingSystem.ViewModel;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7c2d14be69ef9156a390e0171192839d0b15f006071", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7c2d14be69ef9156a390e0171192839d0b15f006272", async() => {
                 WriteLiteral("\r\n    <h1>Customer Feedback</h1>\r\n    <hr />\r\n    <br />\r\n \r\n    <table class=\"table table-borderless table-hover \">\r\n        <thead class=\"thead-dark\">\r\n            <tr>\r\n                <th>\r\n                    ");
 #nullable restore
 #line 28 "C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\Views\Feedback\List.cshtml"
@@ -170,7 +177,7 @@ using AirplaneBookingSystem.ViewModel;
 #line hidden
 #nullable disable
                 WriteLiteral("        </tbody>\r\n    </table>\r\n    <br />\r\n    <hr />\r\n    <div>\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7c2d14be69ef9156a390e0171192839d0b15f009293", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7c2d14be69ef9156a390e0171192839d0b15f009494", async() => {
                     WriteLiteral("Back to Flights");
                 }
                 );
