@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirplaneBookingSystem.Migrations
 {
     [DbContext(typeof(Db_Context))]
-    [Migration("20191105154815_feedback_1")]
-    partial class feedback_1
+    [Migration("20191122175238_initial2")]
+    partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,34 @@ namespace AirplaneBookingSystem.Migrations
                 .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AirplaneBookingSystem.Models.Feedback", b =>
+                {
+                    b.Property<int>("FeedbackId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FeedbackId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Feedback");
+                });
 
             modelBuilder.Entity("AirplaneBookingSystem.Models.Flight", b =>
                 {
@@ -32,17 +60,15 @@ namespace AirplaneBookingSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ArrivalTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("ArrivalTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Departure")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DepartureTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DepartureTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FlightNumber")
                         .IsRequired()
@@ -51,9 +77,30 @@ namespace AirplaneBookingSystem.Migrations
                     b.Property<int>("FreeSeats")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsCanceled")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("TotalSeats")
+                        .HasColumnType("int");
+
                     b.HasKey("FlightId");
 
                     b.ToTable("Flights");
+                });
+
+            modelBuilder.Entity("AirplaneBookingSystem.Models.OverbookedUser", b =>
+                {
+                    b.Property<int>("FlightId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("FlightId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OverbookedUsers");
                 });
 
             modelBuilder.Entity("AirplaneBookingSystem.Models.UserFlights", b =>
@@ -287,6 +334,28 @@ namespace AirplaneBookingSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("User");
+                });
+
+            modelBuilder.Entity("AirplaneBookingSystem.Models.Feedback", b =>
+                {
+                    b.HasOne("AirplaneBookingSystem.Models.User", null)
+                        .WithMany("Feedback")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("AirplaneBookingSystem.Models.OverbookedUser", b =>
+                {
+                    b.HasOne("AirplaneBookingSystem.Models.Flight", "Flight")
+                        .WithMany("OverbookedUsers")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AirplaneBookingSystem.Models.User", "User")
+                        .WithMany("OverbookedUsers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AirplaneBookingSystem.Models.UserFlights", b =>

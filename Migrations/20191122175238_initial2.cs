@@ -2,7 +2,7 @@
 
 namespace AirplaneBookingSystem.Migrations
 {
-    public partial class tweaking_UserFlight : Migration
+    public partial class initial2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

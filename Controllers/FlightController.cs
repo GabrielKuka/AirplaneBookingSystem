@@ -5,6 +5,8 @@ using AirplaneBookingSystem.Data;
 using AirplaneBookingSystem.Models;
 using System.Security.Claims;
 using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace AirplaneBookingSystem.Controllers
 {
@@ -16,28 +18,90 @@ namespace AirplaneBookingSystem.Controllers
             this.ctx = dbContext;         
         }
 
+        [HttpPost]
+        public async Task<IActionResult> MoveToNextFlight(int id)
+        {
+            var currentFlight = await ctx.Flights.FindAsync(id);
+            Flight nextFlight = null;
 
-        
+            // Check if there is a flight with the same dep and dest + a later departure date
+            foreach (var flight in ctx.Flights) {
+                if (flight.Departure == currentFlight.Departure && flight.Arrival == currentFlight.Arrival && flight.DepartureTime > currentFlight.DepartureTime)
+                {
+                    nextFlight = flight;
+                    break;
+                }
+            }
+
+            if (nextFlight != null) {
+                // check if the next flight is already overbooked
+                if (nextFlight.FreeSeats < 0 || nextFlight.FreeSeats < ctx.GetOverbookedUsersFromFlight(currentFlight).Count)
+                    return View("/Views/Errors/NextFlightOverbookedError.cshtml");
+                else
+                { // if not, move the overbooked users there
+
+                    // list of overbooked users from this flight
+                    var overbookedUsers = ctx.GetOverbookedUsersFromFlight(currentFlight); 
+
+                    // Removes all overbooked users and replaces them to the next available flight
+                    for (int i = 0; i < overbookedUsers.Count; i++)
+                    {   
+                        ctx.UserFlights.Add(new UserFlights { User = ctx.GetUserFromEmail(overbookedUsers.ElementAt(i).Email), Flight = nextFlight });
+                        --nextFlight.FreeSeats;
+
+                        ctx.OverbookedUsers.Remove(overbookedUsers.ElementAt(i));
+                        ctx.UserFlights.Remove(ctx.GetSpecificUserFlight(currentFlight, ctx.GetUserFromEmail(overbookedUsers.ElementAt(i).Email)));
+                        ++currentFlight.FreeSeats;
+                        await ctx.SaveChangesAsync();
+                    }
+
+                    return View("/Views/Success/MovedToNextFlight.cshtml");
+                }
+            }
+            else
+            {
+                return View("/Views/Errors/NoNextFlightError.cshtml");
+            }
+
+          
+        }
+  
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            if (!User.Identity.IsAuthenticated) {
+                return View("Views/Errors/MustBeLoggedIn.cshtml");
+            }else if (IsAdmin()) {
+                return View();
+            } else
+            {
+                return View("Views/Errors/MustBeAdmin.cshtml");
+            }
+            
         }
 
         // Creates a flight (you need to be admin)
         [HttpPost]
-       public async Task<IActionResult> Create([Bind("FlightId, FlightNumber, Departure, Arrival, DepartureTime, ArrivalTime, FreeSeats")] Flight flight)
+       public async Task<IActionResult> Create([Bind("FlightId, FlightNumber, Departure, Arrival, DepartureTime, ArrivalTime, TotalSeats")] Flight flight)
         {
-
-            if (ModelState.IsValid) {               // Check validation 
+            
+                if (ModelState.IsValid && IsTimeValid(flight.DepartureTime, flight.ArrivalTime))
+                {               // Check validation 
+                    
+                
                 ctx.Flights.Add(flight);            // Add the flight
-                await ctx.SaveChangesAsync();       // Save changes
-                return RedirectToAction("index", "flight");
-            }
+                flight.FreeSeats = flight.TotalSeats;
 
-            return View(flight);
+                await ctx.SaveChangesAsync();       // Save changes
+                    return RedirectToAction("index", "flight");
+                }
+
+                return View(flight);
+            
+
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             if (!User.Identity.IsAuthenticated)
@@ -53,36 +117,48 @@ namespace AirplaneBookingSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int flightId) {
 
-            var currentFlight = await ctx.Flights.FindAsync(flightId);
-            ctx.Flights.Remove(currentFlight);
-            await ctx.SaveChangesAsync();
+                var currentFlight = await ctx.Flights.FindAsync(flightId);
+                ctx.Flights.Remove(currentFlight);
+                await ctx.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+                    
         }
 
+      
         [HttpGet]
         public async Task<IActionResult> Edit(int? id) {
-            if (id == null)
-                return NotFound();
+            if (!User.Identity.IsAuthenticated) {
+                return View("Views/Errors/MustBeLoggedIn.cshtml");
+            } else if (IsAdmin()) {
 
-            var currentFlight = await ctx.Flights.FindAsync(id);
+                if (id == null)
+                    return NotFound();
 
-            if (currentFlight == null)
-                return NotFound();
+                var currentFlight = await ctx.Flights.FindAsync(id);
+
+                if (currentFlight == null)
+                    return NotFound();
+
+                return View(currentFlight);
+
+            } else
+            {
+                return View("Views/Errors/MustBeAdmin.cshtml");
+            }
             
-            return View(currentFlight);
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FlightId, FlightNumber, Departure, Arrival, DepartureTime, ArrivalTime, FreeSeats")] Flight currentFlight) {
+        public async Task<IActionResult> Edit(int id, [Bind("FlightId, FlightNumber, Departure, Arrival, DepartureTime, ArrivalTime, TotalSeats")] Flight currentFlight) {
 
             if (id != currentFlight.FlightId)
                 return NotFound();
 
             
 
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid && IsTimeValid(currentFlight.DepartureTime, currentFlight.ArrivalTime)) {
                 try {
                     ctx.Update(currentFlight);
                     await ctx.SaveChangesAsync();
@@ -123,15 +199,25 @@ namespace AirplaneBookingSystem.Controllers
             };
 
             if (userFlight != null)
-            {              
+            {   
+                
                 ctx.UserFlights.Add(userFlight);  // add the user flight to the db
                 --currentFlight.FreeSeats;        // assign the seat as reserved
+
+                // Set the user as overbooked
+                if (currentFlight.FreeSeats < 0) {
+                    var overbookedUser = new OverbookedUser { Flight = currentFlight, Email = currentUser.Email };
+                    ctx.OverbookedUsers.Add(overbookedUser);
+                }
+
+              
                 await ctx.SaveChangesAsync();     // save changes to db
             }
                 
 
             return View(userFlight);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Details(int? id) {
@@ -144,9 +230,20 @@ namespace AirplaneBookingSystem.Controllers
             var flight = await ctx.Flights.FindAsync(id);
             ViewData["isBooked"] = false;
             if (IsAdmin())
+            {
                 ViewData["isAdmin"] = true;
+                List<String> overbookedUserEmails = new List<String>();
+                foreach (var overbooked in ctx.OverbookedUsers) {
+                    if (overbooked.Flight == flight)
+                        overbookedUserEmails.Add(overbooked.Email);
+                        
+                }
+                ViewData["OverBookedUsers"] = overbookedUserEmails;
+            }
             else
+            {
                 ViewData["isAdmin"] = false;
+            }
 
             // check if this flight is booked by this user
             foreach (var usrFlight in ctx.UserFlights) {
@@ -165,6 +262,11 @@ namespace AirplaneBookingSystem.Controllers
             return View(flight);
         }
 
+        private bool IsTimeValid(DateTime departure, DateTime arrival)
+        {
+            return departure <= arrival && departure > DateTime.Now;
+        }
+
         private bool IsAdmin() {
 
             var currentUser =  ctx.Users.Find(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -178,7 +280,8 @@ namespace AirplaneBookingSystem.Controllers
         private bool FlightExists(int id) {
             return ctx.Flights.Any(e => e.FlightId == id);
         }
-        public async Task<IActionResult> Cancel(int? id)
+
+        public async Task<IActionResult> CancelBooking(int? id)
         {
 
             if (id == null)
@@ -206,5 +309,7 @@ namespace AirplaneBookingSystem.Controllers
 
             return View(userFlight);
         }
+
     }
+
 }

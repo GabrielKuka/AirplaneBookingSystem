@@ -273,3 +273,9 @@ C:\Users\april\OneDrive\Desktop\All\AUBG Fall 2019\Software Engineering\Project\
 C:\Users\april\OneDrive\Desktop\All\AUBG Fall 2019\Software Engineering\Project\ABS\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.dll
 C:\Users\april\OneDrive\Desktop\All\AUBG Fall 2019\Software Engineering\Project\ABS\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.pdb
 C:\Users\april\OneDrive\Desktop\All\AUBG Fall 2019\Software Engineering\Project\ABS\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\Cancel.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Errors\MustBeAdmin.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Errors\MustBeLoggedIn.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Errors\NextFlightOverbookedError.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Errors\NoNextFlightError.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Success\MovedToNextFlight.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Flight\CancelBooking.cshtml.g.cs
