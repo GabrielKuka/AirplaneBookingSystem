@@ -19,5 +19,7 @@ namespace AirplaneBookingSystem.Data
         public virtual DbSet<UserFlights> UserFlights { get; set; }
 
         public virtual DbSet<Feedback> Feedback { get; set; }
+
+        public virtual DbSet<FreeSeats> FreeSeats { get; set; }
     }
 }
