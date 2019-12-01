@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -20,18 +21,26 @@ namespace AirplaneBookingSystem.Models
         public string Arrival { get; set; }
 
         [DisplayName("Departure Time")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
-        public string DepartureTime { get; set; }
+        public DateTime DepartureTime { get; set; }
 
         [DisplayName("Arrival Time")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
-        public string ArrivalTime { get; set; }
+        public DateTime ArrivalTime { get; set; }
+
+
+        public int FreeSeats { get; set; }
 
         [DisplayName("Number of Seats")]
         [Required]
-        public int FreeSeats { get; set; }
+        public int TotalSeats { get; set; }
+
+        public bool IsCanceled { get; set; }
 
         public IList<UserFlights> UserFlights { get; set; }
 
+        public IList<OverbookedUser> OverbookedUsers { get; set; }
     }
 }

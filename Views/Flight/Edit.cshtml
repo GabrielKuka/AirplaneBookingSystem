@@ -30,12 +30,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="DepartureTime" class="control-label"></label>
-                <input asp-for="DepartureTime" class="form-control" />
+                @Html.EditorFor(m => m.DepartureTime, "{0:dd/MM/YYYY}",
+               new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 <span asp-validation-for="DepartureTime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ArrivalTime" class="control-label"></label>
-                <input asp-for="ArrivalTime" class="form-control" />
+                @Html.EditorFor(m => m.ArrivalTime, "{0:dd/MM/YYYY}",
+              new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 <span asp-validation-for="ArrivalTime" class="text-danger"></span>
             </div>
             <div class="form-group">

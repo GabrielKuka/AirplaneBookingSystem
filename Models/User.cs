@@ -14,6 +14,9 @@ namespace AirplaneBookingSystem.Models
         public bool HasJustReceivedMessage { get; set; }
         public IList<UserFlights> UserFlights { get; set; }
 
-        public IList<Feedback> Feedback { get; set; } 
+        public IList<Feedback> Feedback { get; set; }
+
+        public IList<OverbookedUser> OverbookedUsers { get; set; }
+
     }
 }

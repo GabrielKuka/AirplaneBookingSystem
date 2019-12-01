@@ -20,7 +20,12 @@ namespace AirplaneBookingSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            return View(await ctx.Feedback.ToListAsync());
+            if (!User.Identity.IsAuthenticated)
+                return View("Views/Errors/MustBeLoggedIn.cshtml");
+            else if (IsAdmin())
+                return View(await ctx.Feedback.ToListAsync());
+            else
+                return View("Views/Errors/MustBeAdmin.cshtml");
         }
 
         [HttpGet]

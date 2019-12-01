@@ -17,11 +17,11 @@
 
 
 
-    @if ((bool)ViewData["isAdmin"])
+    @if ((bool)ViewData["isAdmin"])         // Check whether user is admin
     {
         <hr />
         <h4>Welcome Administrator!</h4>
-        <hr />
+        <hr />                                            
         <div style="display:inline-block;">
             <a class="btn btn-outline-info" asp-action="Create">Create A Flight</a>
             <a class="btn btn-outline-info" asp-action="List" asp-controller="Feedback">See the feedback</a>
@@ -30,7 +30,7 @@
         <br />
 
     }
-    else
+    else                                  // If not we provide the option to leave a feedback
     {
         if ((bool)ViewData["HasJustReceivedMessage"])
         {
