@@ -32,12 +32,25 @@
     }
     else                                  // If not we provide the option to leave a feedback
     {
-        <h1>List of Available Flights</h1>
-        <br />
-        <a class="btn btn-link" asp-controller="feedback" asp-action="create">Leave a Feedback</a>
-        <br/>
+        if ((bool)ViewData["HasJustReceivedMessage"])
+        {
+            <h2 style="color:#8B0000">You're flight has been cancelled. We apologize for the inconvinience.</h2> 
+            <br />
+            <h2>Please find below a list with all the flights we currently offer.</h2>
+            <br />
+            <h1>List of Available Flights</h1>
+            <br />
+            <a class="btn btn-link" asp-controller="feedback" asp-action="create">Leave a Feedback</a>
+            <br />
+        }
+        else
+        {
+            <h1>List of Available Flights</h1>
+            <br />
+            <a class="btn btn-link" asp-controller="feedback" asp-action="create">Leave a Feedback</a>
+            <br />
+        }
     }
-
     <table class="table table-borderless table-hover ">
         <thead class="thead-dark">
             <tr>

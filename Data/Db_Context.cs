@@ -22,6 +22,9 @@ namespace AirplaneBookingSystem.Data
         public virtual DbSet<UserFlights> UserFlights { get; set; }
         public virtual DbSet<Feedback> Feedback { get; set; }
 
+<<<<<<< HEAD
+        public virtual DbSet<FreeSeats> FreeSeats { get; set; }
+=======
         public UserFlights GetSpecificUserFlight(Flight flight, User user) {
             foreach (var userFlight in this.UserFlights) {
                 if (flight.FlightId == userFlight.FlightId && user.Id == userFlight.UserId) {
@@ -48,5 +51,6 @@ namespace AirplaneBookingSystem.Data
 
             return list;
         }
+>>>>>>> 523f9007df9922d6788d8dacf14d5d594724e7e4
     }
 }

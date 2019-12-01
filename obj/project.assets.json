@@ -8184,11 +8184,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\april\\OneDrive\\Desktop\\All AUBG Fall 2019\\Software Engineering\\Project\\ABS\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
+      "projectName": "AirplaneBookingSystem",
+      "projectPath": "C:\\Users\\april\\OneDrive\\Desktop\\All AUBG Fall 2019\\Software Engineering\\Project\\ABS\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
+      "packagesPath": "C:\\Users\\april\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\april\\OneDrive\\Desktop\\All AUBG Fall 2019\\Software Engineering\\Project\\ABS\\AirplaneBookingSystem\\obj\\",
+=======
       "projectUniqueName": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
       "projectName": "AirplaneBookingSystem",
       "projectPath": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\AirplaneBookingSystem.csproj",
       "packagesPath": "C:\\Users\\Gabriel Kuka\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Gabriel Kuka\\source\\repos\\AirplaneBookingSystem\\obj\\",
+>>>>>>> 523f9007df9922d6788d8dacf14d5d594724e7e4
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
