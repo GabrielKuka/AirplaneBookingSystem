@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AirplaneBookingSystem.Models;
+using AirplaneBookingSystem.Data;
+using System.Security.Claims;
 
 namespace AirplaneBookingSystem.Controllers
 {
@@ -13,12 +15,14 @@ namespace AirplaneBookingSystem.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly Db_Context ctx;
+        public HomeController(ILogger<HomeController> logger, Db_Context dbcontext)
         {
             _logger = logger;
+            this.ctx = dbcontext;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
             return View();
         }
