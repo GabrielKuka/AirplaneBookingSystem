@@ -282,3 +282,4 @@ C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\bin\Debug\netcoreapp3.0
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\AirplaneBookingSystem.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Email\SendEmail.cshtml.g.cs
+C:\Users\Gabriel Kuka\source\repos\AirplaneBookingSystem\obj\Debug\netcoreapp3.0\Razor\Views\Email\NotifyForCancelation.cshtml.g.cs

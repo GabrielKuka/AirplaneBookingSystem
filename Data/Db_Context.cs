@@ -23,6 +23,30 @@ namespace AirplaneBookingSystem.Data
         public virtual DbSet<UserFlights> UserFlights { get; set; }
         public virtual DbSet<Feedback> Feedback { get; set; }
 
+        public List<string> GetUserEmailsFromFlight(Flight flight) {
+            List<string> emails = new List<string>();
+            foreach (var f in this.Flights) {
+                if (flight.Equals(f)) {
+                    foreach (var uFlight in UserFlights) {
+                        if (uFlight.FlightId == flight.FlightId) {
+                            emails.Add(GetUserFromId(uFlight.UserId).Email);
+                        }
+                    }
+                }
+            }
+            return emails;
+        }
+
+        public User GetUserFromId(string userId) {
+            foreach (var user in this.Users) {
+                if (userId == user.Id) {
+                    return user;
+                }
+            }
+
+            return null;
+        }
+
         public UserFlights GetSpecificUserFlight(Flight flight, User user) {
             foreach (var userFlight in this.UserFlights) {
                 if (flight.FlightId == userFlight.FlightId && user.Id == userFlight.UserId) {

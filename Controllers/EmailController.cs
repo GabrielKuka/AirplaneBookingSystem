@@ -42,7 +42,7 @@ namespace AirplaneBookingSystem.Controllers
                     MailboxAddress to = new MailboxAddress(FirstName, email);
 
                     bodyBuilder.TextBody = "Dear " + FirstName + " " + LastName + 
-                        ",\nDue to overbooked seats, we have decided to postpone your current flight.\nSincerely,\n\nAdministrator";
+                        ",\nDue to overbooked seats, we have decided to postpone your current flight.\nSincerely,\n\nThe Administrator";
 
                     msg.To.Add(to);
                     msg.Body = bodyBuilder.ToMessageBody();
@@ -63,6 +63,47 @@ namespace AirplaneBookingSystem.Controllers
             return View(); ;
         }
 
-        private void PrepareEmail() { }
+        public async Task<IActionResult> NotifyForCancelation(List<string> notifyEmails)
+        {
+            MimeMessage msg = new MimeMessage();
+            msg.Subject = "Flight cancelation";
+            msg.From.Add(new MailboxAddress("Admin", "my_airplane@outlook.com"));
+
+            BodyBuilder bodyBuilder = new BodyBuilder();
+
+            foreach (var email in notifyEmails)
+            {
+                using (var emailClient = new SmtpClient())
+                {
+                    await emailClient.ConnectAsync("smtp-mail.outlook.com", 587, false);
+                    await emailClient.AuthenticateAsync("my_airplane@outlook.com", "Iamadmin~");
+
+                    var currentUser = ctx.GetUserFromEmail(email);
+                    string FirstName = currentUser.FirstName;
+                    string LastName = currentUser.LastName;
+
+                    MailboxAddress to = new MailboxAddress(FirstName, email);
+
+                    bodyBuilder.TextBody = "Dear " + FirstName + " " + LastName +
+                        ",\nDue to operational reasons, your flight has  been canceled.\nSincerely,\n\nThe Administrator";
+
+                    msg.To.Add(to);
+                    msg.Body = bodyBuilder.ToMessageBody();
+
+
+
+                    emailClient.Send(msg);
+
+
+
+                    emailClient.Disconnect(true);
+                    emailClient.Dispose();
+                }
+
+
+
+            }
+            return View();
+        }
     }
 }

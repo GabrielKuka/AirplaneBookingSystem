@@ -26,7 +26,9 @@ namespace AirplaneBookingSystem.Controllers
 
             // Check if there is a flight with the same dep and dest + a later departure date
             foreach (var flight in ctx.Flights) {
-                if (flight.Departure == currentFlight.Departure && flight.Arrival == currentFlight.Arrival && flight.DepartureTime > currentFlight.DepartureTime)
+                if (flight.Departure == currentFlight.Departure && 
+                    flight.Arrival == currentFlight.Arrival && 
+                    flight.DepartureTime > currentFlight.DepartureTime)
                 {
                     nextFlight = flight;
                     break;
@@ -126,16 +128,23 @@ namespace AirplaneBookingSystem.Controllers
 
                 var currentFlight = await ctx.Flights.FindAsync(flightId);
                 List<OverbookedUser> oUsers = ctx.GetOverbookedUsersFromFlight(currentFlight);
-                 ctx.Flights.Remove(currentFlight);
+
+                List<string> emails = new List<string>();
+                emails.AddRange(ctx.GetUserEmailsFromFlight(currentFlight));
+
+                ctx.Flights.Remove(currentFlight);
 
                 if (oUsers.Count() > 0) {
                     foreach (var oUser in oUsers) {
+                    emails.Add(oUser.Email);
                     ctx.OverbookedUsers.Remove(oUser);
                     }
                 }    
                 await ctx.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                
+
+                return RedirectToAction("NotifyForCancelation", "Email", new { notifyEmails = emails});
                     
         }
 
